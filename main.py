@@ -4,6 +4,9 @@ c = 0
 more_than_30 = 0
 all = -1
 a = set()
+
+name = input()
+
 with open('books.csv', 'r', newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
     for i in reader:
@@ -20,5 +23,9 @@ with open('books.csv', 'r', newline='') as csvfile:
         #print(s, len(s))
         #c += 1
         #if c == 50: break
+        #print(s)
+        if name in s[3]:
+            print(s[1])
+
 print(all, more_than_30)
 #print(a)
