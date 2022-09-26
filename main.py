@@ -25,16 +25,17 @@ with open('books.csv') as f:
             if name.lower() in s[3].lower() and float(s[7]) < 200:
                 print(s[1])
 
-        #поиск самых популярных книг (в таком виде из-за него программа может долго работать)
+        #поиск самых популярных книг
         #т.к. в файле есть несколько копий одной книги считает кол-во выдачей для всех копий
         if s[1] in popular: popular[s[1]] += int(s[8])
         else: popular[s[1]] = int(s[8])
-        popular = dict(sorted(popular.items(), key=lambda item: item[1]))
 
         tags.update(*[x.split('#') for x in s[12].split('# ')])
 
         id_set.add(s[0])
         title_set.add(s[1])
+
+popular = dict(sorted(popular.items(), key=lambda item: item[1]))
 
 #запись 20 рандомных книг в файл
 with open('books.csv') as f:
@@ -59,4 +60,3 @@ for i in range(len(popular) - 1, len(popular) - 21, -1):
 print('-'*30)
 tags.remove('')
 print(f"Все жанры: {', '.join(tags)}")
-print(len(tags))
